@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رسم قلب متحرك</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #000000;
+    }
+
+    .heart {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      transform: rotate(-45deg);
+      animation: drawHeart 2s ease-out forwards;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: grow 2s ease-out forwards;
+    }
+
+    .heart::before {
+      top: -50px;
+      left: 0;
+    }
+
+    .heart::after {
+      top: 0;
+      left: 50px;
+    }
+
+    /* الرسوم المتحركة لرسم القلب */
+    @keyframes drawHeart {
+      0% {
+        transform: rotate(-45deg) scale(0);
+      }
+      50% {
+        transform: rotate(-45deg) scale(1.2);
+      }
+      100% {
+        transform: rotate(-45deg) scale(1);
+      }
+    }
+
+    /* الرسوم المتحركة لتكبير الأجزاء */
+    @keyframes grow {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="heart"></div>
+</body>
+</html>
+
